@@ -1,14 +1,4 @@
-from dataclasses import dataclass
-
-
-@dataclass(frozen=True)
-class Version:
-    major: int
-    minor: int = 0
-    patch: int = 0
-
-    def __str__(self) -> str:
-        return f"{self.major}.{self.minor}.{self.patch}"
+from devsetup.core.version import Version
 
 
 VERSION_REQUIREMENTS = [

@@ -1,40 +1,11 @@
-import re
-from typing import Optional
-
 from rich.console import Console
 from rich.table import Table
 
-from devsetup.config.requirements import SIMPLE_REQUIREMENTS, VERSION_REQUIREMENTS, Version
+from devsetup.config.requirements import SIMPLE_REQUIREMENTS, VERSION_REQUIREMENTS
 from devsetup.core.checks import command_exists, get_command_output
+from devsetup.core.version import Version, is_version_compatible, parse_version
 
 console = Console()
-
-
-
-def parse_version(output: str) -> Optional[Version]:
-    match = re.search(r"(\d+)(?:\.(\d+))?(?:\.(\d+))?", output)
-
-    if not match:
-        return None
-
-    major = int(match.group(1))
-    minor = int(match.group(2) or 0)
-    patch = int(match.group(3) or 0)
-
-    return Version(major, minor, patch)
-
-
-def is_version_compatible(current: Version, minimum: Version) -> bool:
-    return (
-        current.major,
-        current.minor,
-        current.patch,
-    ) >= (
-        minimum.major,
-        minimum.minor,
-        minimum.patch,
-    )
-
 
 def get_version_output(command: str, args: list[str]) -> str:
     if not command_exists(command):
