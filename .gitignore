@@ -1,0 +1,81 @@
+# =========================
+# PYTHON
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# =========================
+# DISTRIBUTION / BUILD
+# =========================
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# =========================
+# VIRTUAL ENV
+# =========================
+.venv/
+venv/
+env/
+ENV/
+
+# =========================
+# TEST / COVERAGE
+# =========================
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.tox/
+.nox/
+
+# =========================
+# LOGS
+# =========================
+*.log
+logs/
+*.tmp
+*.pid
+
+# =========================
+# ENV / CONFIG
+# =========================
+.env
+.env.*
+*.env
+
+# =========================
+# IDEs
+# =========================
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm / IntelliJ
+.idea/
+
+# =========================
+# OS FILES
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# TYPE CHECKERS
+# =========================
+.mypy_cache/
+.pyre/
+.pytype/
+
+# =========================
+# CLI OUTPUT (caso você evolua)
+# =========================
+.devsetup/
+.cache/
