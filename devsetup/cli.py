@@ -1,0 +1,95 @@
+import typer
+
+from devsetup.core.prompt import confirm, set_auto_yes
+from devsetup.core.shell import set_dry_run
+from devsetup.installers.git import setup_git
+from devsetup.installers.java import setup_java
+from devsetup.installers.mysql import setup_mysql
+from devsetup.installers.node import setup_node
+from devsetup.installers.postgres import setup_postgres
+from devsetup.installers.python import setup_python
+from devsetup.installers.system import setup_system
+from devsetup.project.python_project import create_python_project
+
+app = typer.Typer(
+    help="CLI para setup de ambiente de desenvolvimento no WSL/Linux."
+)
+
+
+@app.callback()
+def main(
+    dry_run: bool = typer.Option(
+        False,
+        "--dry-run",
+        help="Mostra os comandos sem executar.",
+    ),
+    yes: bool = typer.Option(
+        False,
+        "--yes",
+        "-y",
+        help="Confirma automaticamente as ações.",
+    ),
+) -> None:
+    set_dry_run(dry_run)
+    set_auto_yes(yes)
+
+
+@app.command()
+def system() -> None:
+    if confirm("Deseja atualizar pacotes do sistema?"):
+        setup_system()
+
+
+@app.command()
+def python() -> None:
+    setup_python()
+
+
+@app.command()
+def node() -> None:
+    setup_node()
+
+
+@app.command()
+def java() -> None:
+    setup_java()
+
+
+@app.command()
+def git() -> None:
+    setup_git()
+
+
+@app.command()
+def mysql() -> None:
+    if confirm("Deseja instalar/configurar o MySQL?"):
+        setup_mysql()
+
+
+@app.command()
+def postgres() -> None:
+    if confirm("Deseja instalar/configurar o PostgreSQL?"):
+        setup_postgres()
+
+
+@app.command()
+def project(name: str) -> None:
+    create_python_project(name)
+
+
+@app.command()
+def all() -> None:
+    if not confirm("Deseja executar o setup completo?"):
+        return
+
+    setup_system()
+    setup_python()
+    setup_node()
+    setup_java()
+    setup_git()
+    setup_mysql()
+    setup_postgres()
+
+
+if __name__ == "__main__":
+    app()
