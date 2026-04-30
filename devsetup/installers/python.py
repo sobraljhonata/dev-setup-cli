@@ -2,6 +2,7 @@ from rich.console import Console
 
 from devsetup.core.checks import command_exists
 from devsetup.core.shell import run_command
+from devsetup.installers.venv import setup_venv
 
 console = Console()
 
@@ -14,7 +15,9 @@ def setup_python() -> None:
     else:
         console.print("[green]Python 3 já está instalado.[/green]")
 
-    run_command("sudo apt install -y python3-pip python3-venv")
+    run_command("sudo apt install -y python3-pip")
+
+    setup_venv()
 
     run_command("touch ~/.bash_aliases")
 

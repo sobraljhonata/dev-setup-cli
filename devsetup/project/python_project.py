@@ -24,6 +24,14 @@ def create_python_project(project_name: str) -> None:
         )
 
     run_command(f"python3 -m venv {project_dir}/.venv")
+    
+    gitignore = project_dir / ".gitignore"
+
+    if not gitignore.exists():
+        gitignore.write_text(
+            "__pycache__/\n.venv/\n.env\n*.pyc\n",
+            encoding="utf-8",
+        )
 
     console.print(f"[bold green]Projeto criado em:[/bold green] {project_dir}")
     console.print("")

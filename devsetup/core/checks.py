@@ -13,9 +13,11 @@ def get_command_output(command: list[str]) -> Optional[str]:
             command,
             capture_output=True,
             text=True,
-            check=True,
+            check=False,
         )
 
-        return result.stdout.strip()
-    except subprocess.CalledProcessError:
+        output = result.stdout.strip() or result.stderr.strip()
+
+        return output or None
+    except Exception:
         return None

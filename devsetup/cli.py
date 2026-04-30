@@ -2,6 +2,7 @@ import typer
 
 from devsetup.core.prompt import confirm, set_auto_yes
 from devsetup.core.shell import set_dry_run
+from devsetup.doctor import run_doctor
 from devsetup.installers.git import setup_git
 from devsetup.installers.java import setup_java
 from devsetup.installers.mysql import setup_mysql
@@ -10,6 +11,7 @@ from devsetup.installers.postgres import setup_postgres
 from devsetup.installers.python import setup_python
 from devsetup.installers.system import setup_system
 from devsetup.project.python_project import create_python_project
+from devsetup.installers.venv import setup_venv
 
 app = typer.Typer(
     help="CLI para setup de ambiente de desenvolvimento no WSL/Linux."
@@ -76,6 +78,16 @@ def postgres() -> None:
 def project(name: str) -> None:
     create_python_project(name)
 
+
+@app.command()
+def doctor() -> None:
+    """Diagnostica o ambiente de desenvolvimento."""
+    run_doctor()
+
+@app.command()
+def venv() -> None:
+    """Instala o pacote python3-venv."""
+    setup_venv()
 
 @app.command()
 def all() -> None:
