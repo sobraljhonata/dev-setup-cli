@@ -1,12 +1,16 @@
 # Dev Setup CLI
 
-CLI para automatizar a configuração inicial de ambiente de desenvolvimento em distribuições Linux dentro do WSL.
+CLI para automatizar a configuração inicial de ambientes de desenvolvimento em distribuições Linux (WSL).
 
-## Objetivo
+---
 
-Este projeto centraliza scripts de instalação e configuração usados no setup de ambientes de desenvolvimento, evitando execução manual repetitiva e reduzindo inconsistências entre máquinas.
+## 🎯 Objetivo
 
-## Recursos atuais
+Centralizar scripts de instalação e configuração usados no setup de ambientes de desenvolvimento, evitando execução manual repetitiva e reduzindo inconsistências entre máquinas.
+
+---
+
+## 🚀 Recursos
 
 - Atualização de pacotes do sistema
 - Instalação/configuração de Python
@@ -21,92 +25,158 @@ Este projeto centraliza scripts de instalação e configuração usados no setup
 - Suporte a `--dry-run`
 - Suporte a `--yes`
 
-## Requisitos
+---
 
-- Linux/WSL
+## ⚙️ Requisitos
+
+- Linux / WSL
 - Python 3.10+
 - `pip`
 - Permissão para executar comandos com `sudo`
 
-## Instalação local
+---
+
+## 📦 Instalação
+
+### Local (modo desenvolvimento)
 
 ```bash
 git clone https://github.com/sobraljhonata/dev-setup-cli
 cd dev-setup-cli
 pip install -e ".[dev]"
 ```
-## Uso
-devsetup --help
-Comandos disponíveis
-Atualizar sistema
-devsetup system
-Configurar Python
-devsetup python
-Instalar apenas o venv
-devsetup venv
-Configurar Node.js
-devsetup node
-Configurar Java
-devsetup java
-Configurar Git
-devsetup git
-Configurar MySQL
-devsetup mysql
-Configurar PostgreSQL
-devsetup postgres
-Criar projeto Python
-devsetup project minha-poc
 
-## O projeto será criado em:
+---
+
+## ▶️ Uso
+
+```bash
+devsetup --help
+```
+
+---
+
+## 🧩 Comandos
+
+### Sistema
+
+```bash
+devsetup system
+```
+
+### Python
+
+```bash
+devsetup python
+devsetup venv
+```
+
+### Node.js
+
+```bash
+devsetup node
+```
+
+### Java
+
+```bash
+devsetup java
+```
+
+### Git
+
+```bash
+devsetup git
+```
+
+### Banco de dados
+
+```bash
+devsetup mysql
+devsetup postgres
+```
+
+### Criar projeto Python
+
+```bash
+devsetup project minha-poc
+```
+
+O projeto será criado em:
+
 ```bash
 ~/Projetos/minha-poc
 ```
 
-## Com a estrutura inicial:
+Estrutura:
 
+```text
 minha-poc/
 ├── main.py
 └── .venv/
+```
 
-## Diagnosticar ambiente
+---
+
+## 🩺 Diagnóstico do ambiente
+
 ```bash
 devsetup doctor
 ```
-### O comando verifica ferramentas, versões mínimas e serviços.
 
-## Versões mínimas atuais:
+O comando verifica:
 
-```text
-Ferramenta	Versão mínima
-Python	3.10.0
-Node.js	22.0.0
-Java	21.0.0
-Maven	3.8.0
-Git	2.34.0
-MySQL	8.0.0
-PostgreSQL	14.0.0
-Opções globais
-Dry-run
-```
+- Ferramentas instaladas
+- Versões mínimas
+- Status de serviços
 
-## Mostra os comandos sem executar:
+---
 
+## 📊 Versões mínimas
+
+| Ferramenta  | Versão mínima |
+|------------|--------------:|
+| Python     | 3.10.0 |
+| Node.js    | 22.0.0 |
+| Java       | 21.0.0 |
+| Maven      | 3.8.0 |
+| Git        | 2.34.0 |
+| MySQL      | 8.0.0 |
+| PostgreSQL | 14.0.0 |
+
+---
+
+## ⚡ Opções globais
+
+### Dry-run
+
+Mostra os comandos sem executar:
+
+```bash
 devsetup --dry-run system
 devsetup --dry-run --yes all
-Yes
+```
+
+### Yes
 
 Confirma automaticamente ações interativas:
 
+```bash
 devsetup --yes system
-
-Atalho:
-
 devsetup -y system
-Setup completo
+```
+
+---
+
+## 🏁 Setup completo
+
+```bash
 devsetup all
+```
 
-Esse comando executa:
+Executa:
 
+```text
 system
 python
 node
@@ -114,20 +184,35 @@ java
 git
 mysql
 postgres
-Testes
+```
 
-Instalar dependências de desenvolvimento:
+---
 
+## 🧪 Testes
+
+Instalar dependências:
+
+```bash
 pip install -e ".[dev]"
+```
 
 Rodar testes:
 
+```bash
 pytest
+```
 
-Rodar testes com cobertura:
+Cobertura:
 
+```bash
 pytest --cov --cov-report=term-missing
-Estrutura do projeto
+```
+
+---
+
+## 🏗️ Estrutura do projeto
+
+```text
 dev-setup-cli/
 ├── devsetup/
 │   ├── cli.py
@@ -153,23 +238,47 @@ dev-setup-cli/
 ├── tests/
 ├── pyproject.toml
 └── README.md
-Segurança
+```
 
-Este CLI executa comandos com sudo.
+---
 
-Antes de executar comandos sensíveis, recomenda-se usar:
+## 🔒 Segurança
 
+Este CLI executa comandos com `sudo`.
+
+Recomendado usar:
+
+```bash
 devsetup --dry-run <comando>
+```
 
 Exemplo:
 
+```bash
 devsetup --dry-run mysql
-Roadmap
-Testes para installers
-Testes para CLI com Typer CliRunner
-Melhorias no doctor
-Suporte a Docker
-Suporte a SDKMAN
-Suporte a criação de projetos Java/Spring Boot
-Suporte a criação de projetos Node.js/TypeScript
-Configuração via arquivo .devsetup.toml
+```
+
+---
+
+## 🛣️ Roadmap
+
+- [ ] Testes para installers
+- [ ] Testes para CLI com Typer CliRunner
+- [ ] Melhorias no `doctor`
+- [ ] Suporte a Docker
+- [ ] Suporte a SDKMAN
+- [ ] Criação de projetos Java/Spring Boot
+- [ ] Criação de projetos Node.js/TypeScript
+- [ ] Configuração via `.devsetup.toml`
+
+---
+
+## 🤝 Contribuição
+
+Veja o arquivo `CONTRIBUTING.md`.
+
+---
+
+## 📄 Licença
+
+MIT

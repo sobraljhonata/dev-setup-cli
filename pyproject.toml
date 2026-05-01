@@ -1,12 +1,31 @@
 [project]
-name = "dev-setup-cli"
+name = "dev-setup-cli-jhonata"
 version = "0.1.0"
-description = "CLI para setup de ambiente de desenvolvimento no WSL/Linux"
+description = "CLI para setup automatizado de ambiente de desenvolvimento no WSL/Linux"
+readme = "README.md"
 requires-python = ">=3.10"
-dependencies = [
-  "typer>=0.12.0",
-  "rich>=13.0.0"
+license = { text = "MIT" }
+authors = [
+  { name = "Jhonata Sobral" }
 ]
+keywords = ["cli", "wsl", "linux", "developer-tools", "setup"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development",
+  "Topic :: System :: Installation/Setup",
+]
+
+[project.urls]
+Homepage = "https://github.com/sobraljhonata/dev-setup-cli"
+Repository = "https://github.com/sobraljhonata/dev-setup-cli"
+Issues = "https://github.com/sobraljhonata/dev-setup-cli/issues"
 
 [project.optional-dependencies]
 dev = [
@@ -14,6 +33,8 @@ dev = [
   "pytest-cov>=5.0.0",
   "ruff>=0.6.0",
   "pre-commit>=3.0.0",
+  "build>=1.2.0",
+  "twine>=5.0.0",
 ]
 
 [tool.pytest.ini_options]

@@ -5,3 +5,16 @@ repos:
       - id: ruff
         args: ["--fix"]
       - id: ruff-format
+
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.27.0
+    hooks:
+      - id: commitizen
+
+  - repo: local
+    hooks:
+      - id: pytest
+        name: run tests with coverage
+        entry: pytest --cov --cov-fail-under=80
+        language: system
+        pass_filenames: false
