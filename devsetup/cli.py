@@ -10,12 +10,10 @@ from devsetup.installers.node import setup_node
 from devsetup.installers.postgres import setup_postgres
 from devsetup.installers.python import setup_python
 from devsetup.installers.system import setup_system
-from devsetup.project.python_project import create_python_project
 from devsetup.installers.venv import setup_venv
+from devsetup.project.python_project import create_python_project
 
-app = typer.Typer(
-    help="CLI para setup de ambiente de desenvolvimento no WSL/Linux."
-)
+app = typer.Typer(help="CLI para setup de ambiente de desenvolvimento no WSL/Linux.")
 
 
 @app.callback()
@@ -84,10 +82,12 @@ def doctor() -> None:
     """Diagnostica o ambiente de desenvolvimento."""
     run_doctor()
 
+
 @app.command()
 def venv() -> None:
     """Instala o pacote python3-venv."""
     setup_venv()
+
 
 @app.command()
 def all() -> None:

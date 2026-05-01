@@ -17,14 +17,18 @@ def create_python_project(project_name: str) -> None:
 
     main_file = project_dir / "main.py"
 
+    main_content = (
+        "def main():\n"
+        '    print("Hello, world!")\n\n\n'
+        'if __name__ == "__main__":\n'
+        "    main()\n"
+    )
+
     if not main_file.exists():
-        main_file.write_text(
-            'def main():\n    print("Hello, world!")\n\n\nif __name__ == "__main__":\n    main()\n',
-            encoding="utf-8",
-        )
+        main_file.write_text(main_content, encoding="utf-8")
 
     run_command(f"python3 -m venv {project_dir}/.venv")
-    
+
     gitignore = project_dir / ".gitignore"
 
     if not gitignore.exists():

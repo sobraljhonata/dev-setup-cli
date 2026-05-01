@@ -10,8 +10,11 @@ def setup_system() -> None:
 
     run_command("sudo apt update -y")
     run_command("sudo apt upgrade -y")
-    run_command(
-        "sudo apt install -y curl wget unzip zip build-essential software-properties-common ca-certificates gnupg lsb-release"
+    packages = (
+        "curl wget unzip zip build-essential software-properties-common "
+        "ca-certificates gnupg lsb-release"
     )
+
+    run_command(f"sudo apt install -y {packages}")
 
     console.print("[bold green]Sistema atualizado com sucesso.[/bold green]")

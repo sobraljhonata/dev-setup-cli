@@ -1,6 +1,5 @@
 import re
 from dataclasses import dataclass
-from typing import Optional
 
 
 @dataclass(frozen=True)
@@ -13,7 +12,7 @@ class Version:
         return f"{self.major}.{self.minor}.{self.patch}"
 
 
-def parse_version(output: str) -> Optional[Version]:
+def parse_version(output: str) -> Version | None:
     match = re.search(r"(\d+)(?:\.(\d+))?(?:\.(\d+))?", output)
 
     if not match:

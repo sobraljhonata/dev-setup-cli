@@ -21,8 +21,11 @@ def setup_python() -> None:
 
     run_command("touch ~/.bash_aliases")
 
-    run_command(
-        "grep -qxF \"alias python='python3'\" ~/.bash_aliases || echo \"alias python='python3'\" >> ~/.bash_aliases"
+    alias_command = (
+        "grep -qxF \"alias python='python3'\" ~/.bash_aliases "
+        "|| echo \"alias python='python3'\" >> ~/.bash_aliases"
     )
+
+    run_command(alias_command)
 
     console.print("[bold green]Python configurado com sucesso.[/bold green]")

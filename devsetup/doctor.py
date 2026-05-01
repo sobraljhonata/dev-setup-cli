@@ -7,6 +7,7 @@ from devsetup.core.version import Version, is_version_compatible, parse_version
 
 console = Console()
 
+
 def get_version_output(command: str, args: list[str]) -> str:
     if not command_exists(command):
         return "-"
@@ -69,8 +70,6 @@ def run_doctor() -> None:
     table.add_column("Versão mínima")
     table.add_column("Sugestão")
 
-    
-
     for name, command, version_command, minimum, suggestion in VERSION_REQUIREMENTS:
         status, version = check_min_version(command, version_command, minimum)
 
@@ -85,7 +84,6 @@ def run_doctor() -> None:
             f">= {minimum}",
             fix,
         )
-
 
     for name, command, version_command, suggestion in SIMPLE_REQUIREMENTS:
         installed = command_exists(command)

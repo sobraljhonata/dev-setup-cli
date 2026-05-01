@@ -21,16 +21,25 @@ def setup_mysql() -> None:
     db_user = ask_text("Nome do usuário", "user_app")
     db_password = ask_password("Senha do usuário", "Senha@123")
 
-    run_command(f"""sudo mysql -e "CREATE DATABASE IF NOT EXISTS {db_name};" """)
-
-    run_command(
-        f"""sudo mysql -e "CREATE USER IF NOT EXISTS '{db_user}'@'localhost' IDENTIFIED BY '{db_password}';" """
+    create_database_command = (
+        f"""sudo mysql -e "CREATE DATABASE IF NOT EXISTS {db_name};" """
     )
 
-    run_command(
-        f"""sudo mysql -e "GRANT ALL PRIVILEGES ON {db_name}.* TO '{db_user}'@'localhost';" """
+    create_user_command = (
+        "sudo mysql -e "
+        f""""CREATE USER IF NOT EXISTS '{db_user}'@'localhost' """
+        f"""IDENTIFIED BY '{db_password}';" """
     )
 
+    grant_privileges_command = (
+        "sudo mysql -e "
+        f""""GRANT ALL PRIVILEGES ON {db_name}.* """
+        f"""TO '{db_user}'@'localhost';" """
+    )
+
+    run_command(create_database_command)
+    run_command(create_user_command)
+    run_command(grant_privileges_command)
     run_command("""sudo mysql -e "FLUSH PRIVILEGES;" """)
 
     console.print("[bold green]MySQL configurado com sucesso.[/bold green]")
