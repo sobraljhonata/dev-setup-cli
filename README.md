@@ -50,6 +50,24 @@ Ou com pipx (recomendado):
 pipx install dev-setup-cli-jhonata
 ```
 
+## 🧪 Exemplos de configuração
+
+Você pode usar arquivos `.devsetup.toml` para personalizar os profiles.
+
+Exemplos disponíveis em `/examples`:
+
+- backend
+- frontend
+- fullstack
+- teaching
+
+### Como usar
+
+```bash
+cp examples/backend.toml .devsetup.toml
+devsetup profile backend
+```
+
 ### Executar
 
 ```bash

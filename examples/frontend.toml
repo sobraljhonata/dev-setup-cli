@@ -1,0 +1,7 @@
+# Frontend profile
+
+[profile.frontend]
+tools = ["system", "git", "node"]
+
+[node]
+version = 22
