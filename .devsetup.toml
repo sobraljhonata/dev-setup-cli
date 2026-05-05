@@ -1,0 +1,14 @@
+[profile.backend]
+tools = ["system", "git", "python", "node", "java", "postgres"]
+
+[profile.frontend]
+tools = ["system", "git", "node"]
+
+[profile.fullstack]
+tools = ["system", "git", "python", "node", "java", "mysql", "postgres"]
+
+[profile.python]
+tools = ["system", "git", "python"]
+
+[profile.teacher]
+tools = ["system", "git", "python", "node"]
