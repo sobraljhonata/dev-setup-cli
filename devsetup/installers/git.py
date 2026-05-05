@@ -26,5 +26,20 @@ def setup_git() -> None:
     run_command("git config --global init.defaultBranch main")
     run_command("git config --global core.editor 'code --wait'")
     run_command("git config --global pull.rebase false")
+    status_alias_command = "git config --global alias.s '!git status -s'"
+
+    commit_alias_command = (
+        "git config --global alias.c " '"!git add --all && git commit -m"'
+    )
+
+    log_alias_command = (
+        "git config --global alias.l "
+        '"!git log --pretty=format:'
+        "'%C(blue)%h%C(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr'\""
+    )
+
+    run_command(status_alias_command)
+    run_command(commit_alias_command)
+    run_command(log_alias_command)
 
     console.print("[bold green]Git configurado com sucesso.[/bold green]")
