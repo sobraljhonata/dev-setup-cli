@@ -29,7 +29,7 @@ def setup_git() -> None:
     status_alias_command = "git config --global alias.s '!git status -s'"
 
     commit_alias_command = (
-        "git config --global alias.c " '"!git add --all && git commit -m"'
+        'git config --global alias.c "!git add --all && git commit -m"'
     )
 
     log_alias_command = (

@@ -67,7 +67,7 @@ def get_profile_tools(profile_name: str) -> list[str]:
     if errors:
         formatted_errors = "\n".join(f"- {error}" for error in errors)
         raise ValueError(
-            "Configuração inválida em .devsetup.toml:\n" f"{formatted_errors}"
+            f"Configuração inválida em .devsetup.toml:\n{formatted_errors}"
         )
 
     config_profiles = get_config_profiles(config)
