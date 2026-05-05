@@ -4,6 +4,7 @@ from typing import Any
 from rich.console import Console
 
 from devsetup.config.loader import load_config
+from devsetup.config.validator import validate_config
 from devsetup.installers.git import setup_git
 from devsetup.installers.java import setup_java
 from devsetup.installers.mysql import setup_mysql
@@ -60,6 +61,15 @@ def get_config_profiles(config: dict[str, Any]) -> dict[str, list[str]]:
 
 def get_profile_tools(profile_name: str) -> list[str]:
     config = load_config()
+
+    errors = validate_config(config)
+
+    if errors:
+        formatted_errors = "\n".join(f"- {error}" for error in errors)
+        raise ValueError(
+            "Configuração inválida em .devsetup.toml:\n" f"{formatted_errors}"
+        )
+
     config_profiles = get_config_profiles(config)
 
     if profile_name in config_profiles:
